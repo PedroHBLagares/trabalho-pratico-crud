@@ -1,0 +1,160 @@
+/* --- 1. IMPORTAÇÃO DE FONTES MODERNAS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* --- 2. CONFIGURAÇÕES GERAIS (Body e Fontes) --- */
+html {
+    scroll-behavior: smooth; /* Rolagem suave */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Fonte mais limpa para o corpo */
+    background-color: #fdfdfd; /* Fundo um pouco mais claro que o original */
+    color: #333; /* Cor de texto principal (cinza escuro, não preto) */
+}
+
+/* Fontes de Destaque para títulos e marca */
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* --- 3. ESTILOS DOS TÍTULOS DE SEÇÃO (h2) --- */
+h2.display-6 {
+    font-weight: 700; /* Mais peso na fonte */
+    color: #1a2533; /* Um azul-escuro corporativo */
+    padding-bottom: 0.5rem; /* Espaçamento da borda */
+    border-bottom: 3px solid #0d6efd; /* Borda azul mais grossa */
+    display: inline-block; /* Faz a borda ter o tamanho do texto */
+    margin-bottom: 1.5rem !important;
+}
+
+/* --- 4. CARROSSEL (Seção 2) --- */
+.carousel-item {
+    height: 550px; /* Um pouco mais alto */
+}
+
+.carousel-img {
+    height: 100%;
+    object-fit: cover;
+    /* Escurece menos a imagem para ficar mais vibrante */
+    filter: brightness(0.85);
+}
+
+/* Títulos do carrossel mais marcantes */
+.carousel-caption h5 {
+    font-weight: 700;
+    font-size: 3rem; /* Fonte maior */
+    /* Sombra de texto forte para garantir legibilidade */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Transforma os indicadores em CÍRCULOS (mais moderno) */
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: #fff;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #0d6efd; /* Cor primária no indicador ativo */
+}
+
+/* --- 5. CARDS PRINCIPAIS (Seção 3) --- */
+.card-custom {
+    border: none;
+    border-radius: 12px; /* Mais arredondado */
+    /* Sombra mais suave e moderna */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    transition: all 0.35s ease-in-out; /* Transição mais suave */
+}
+
+.card-custom:hover {
+    /* Efeito de "lift" mais pronunciado */
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-custom .card-img-top {
+    border-top-left-radius: 12px; /* Acompanha o card */
+    border-top-right-radius: 12px;
+    height: 220px; /* Imagens um pouco mais altas */
+    object-fit: cover;
+}
+
+.card-custom .card-footer {
+    background-color: #fff;
+    border-top: none;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* --- 6. CARDS SECUNDÁRIOS (Página Detalhes) --- */
+.card-custom-secundario {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.card-custom-secundario:hover {
+     transform: translateY(-4px);
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-custom-secundario .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 160px; /* Imagens mais altas */
+    object-fit: cover;
+}
+
+/* --- 7. BOTÕES (Upgrade para Gradiente e Sombra) --- */
+.btn-primary-custom, 
+.carousel-caption .btn { /* Aplica ao botão do carrossel também */
+    background: linear-gradient(45deg, #0d6efd, #0a58ca); /* GRADIENTE */
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    /* Sombra para o botão, dando profundidade */
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    padding: 0.6rem 1.2rem; /* Botão um pouco maior */
+    border-radius: 50px; /* Botão "pilula" */
+}
+
+.btn-primary-custom:hover,
+.carousel-caption .btn:hover {
+    transform: translateY(-3px); /* Efeito de lift no botão */
+    box-shadow: 0 6px 18px rgba(13, 110, 253, 0.4);
+    background: linear-gradient(45deg, #0b5ed7, #0a58ca); /* Escurece no hover */
+    color: #fff;
+}
+
+/* Botão secundário (Voltar) */
+.btn-secondary-custom {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+    border-radius: 50px;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-custom:hover {
+    background-color: #5c636a;
+    border-color: #565e64;
+    color: #fff;
+    transform: translateY(-2px);
+}

@@ -1,0 +1,94 @@
+{
+  "destinos": [
+    {
+      "id": 1,
+      "nome": "Paris",
+      "descricao": "Capital francesa famosa por arte, gastronomia e arquitetura icônica.",
+      "conteudo": "Paris oferece museus de classe mundial, boulevards arborizados e cafés charmosos. Ideal para quem busca história, cultura e experiências gastronômicas.",
+      "pais": "França",
+      "destaque": false,
+      "date": "2025-03-20",
+      "imagem_principal": "assets/img/paris.jpg",
+      "atracoes": [
+        { "id": 1, "nome": "Torre Eiffel", "descricao": "Monumento símbolo de Paris com mirantes panorâmicos.", "imagem": "assets/img/atracoes/torre_eiffel.jpg" },
+        { "id": 2, "nome": "Museu do Louvre", "descricao": "Maior museu de arte do mundo, lar da Mona Lisa.", "imagem": "assets/img/atracoes/louvre.jpg" },
+        { "id": 3, "nome": "Catedral de Notre-Dame", "descricao": "Obra-prima gótica às margens do Sena.", "imagem": "assets/img/atracoes/notre_dame.jpg" }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Kyoto",
+      "descricao": "Antiga capital do Japão, reconhecida por templos, jardins e tradições.",
+      "conteudo": "Kyoto preserva santuários xintoístas, templos budistas e bairros históricos. Visita imperdível para contemplar a flora das cerejeiras e a cultura milenar.",
+      "pais": "Japão",
+      "destaque": false,
+      "date": "2025-03-28",
+      "imagem_principal": "assets/img/kyoto.jpg",
+      "atracoes": [
+        { "id": 1, "nome": "Fushimi Inari Taisha", "descricao": "Santuário famoso por milhares de portais torii.", "imagem": "assets/img/atracoes/fushimi_inari.jpg" },
+        { "id": 2, "nome": "Kinkaku-ji (Pavilhão Dourado)", "descricao": "Templo zen coberto com folhas de ouro em um lago sereno.", "imagem": "assets/img/atracoes/kinkaku_ji.jpg" },
+        { "id": 3, "nome": "Arashiyama", "descricao": "Distrito famoso por sua floresta de bambu e vistas serenas.", "imagem": "assets/img/atracoes/arashiyama.jpg" }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Rio de Janeiro",
+      "descricao": "Cidade maravilhosa com praias, morros e ritmo contagiante.",
+      "conteudo": "Entre o mar e a mata, o Rio combina belezas naturais, patrimônio histórico e vida cultural vibrante. Ideal para quem busca sol, trilhas e música.",
+      "pais": "Brasil",
+      "destaque": true,
+      "date": "2025-02-27",
+      "imagem_principal": "assets/img/rio.jpg",
+      "atracoes": [
+        { "id": 1, "nome": "Cristo Redentor", "descricao": "Estátua no topo do Corcovado com vista panorâmica da cidade.", "imagem": "assets/img/atracoes/cristo_redentor.jpg" },
+        { "id": 2, "nome": "Pão de Açúcar", "descricao": "Complexo de morros com bondinho e mirantes sobre a baía.", "imagem": "assets/img/atracoes/pao_de_acucar.jpg" },
+        { "id": 3, "nome": "Jardim Botânico", "descricao": "Parque com espécies nativas e alamedas de palmeiras imperiais.", "imagem": "assets/img/atracoes/jardim_botanico_rio.jpg" }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Roma",
+      "descricao": "A cidade eterna, cheia de história, arte e culinária.",
+      "conteudo": "Roma é um museu a céu aberto. Explore o Coliseu, o Fórum Romano e a Cidade do Vaticano. Desfrute de massas autênticas e um gelato inesquecível.",
+      "pais": "Itália",
+      "destaque": true,
+      "date": "2025-04-10",
+      "imagem_principal": "assets/img/roma.jpg",
+      "atracoes": [
+        { "id": 1, "nome": "Coliseu", "descricao": "Antigo anfiteatro romano, símbolo da cidade.", "imagem": "assets/img/atracoes/coliseu.jpg" },
+        { "id": 2, "nome": "Fontana di Trevi", "descricao": "A maior e mais famosa fonte barroca de Roma.", "imagem": "assets/img/atracoes/trevi.jpg" },
+        { "id": 3, "nome": "Panteão", "descricao": "Antigo templo romano com uma cúpula de óculo impressionante.", "imagem": "assets/img/atracoes/panteao.jpg" }
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Nova Iorque",
+      "descricao": "A cidade que nunca dorme, com seus arranha-céus e a Times Square.",
+      "conteudo": "De shows da Broadway ao Central Park, Nova Iorque oferece uma energia incomparável. Visite a Estátua da Liberdade e o Museu Metropolitano de Arte (MET).",
+      "pais": "EUA",
+      "destaque": false,
+      "date": "2025-05-01",
+      "imagem_principal": "assets/img/nova_iorque.jpg",
+      "atracoes": [
+        { "id": 1, "nome": "Times Square", "descricao": "O coração pulsante de Manhattan, com seus letreiros luminosos.", "imagem": "assets/img/atracoes/times_square.jpg" },
+        { "id": 2, "nome": "Estátua da Liberdade", "descricao": "Símbolo de liberdade e democracia dos EUA.", "imagem": "assets/img/atracoes/estatua_liberdade.jpg" },
+        { "id": 3, "nome": "Central Park", "descricao": "O pulmão verde de Manhattan, com lagos, trilhas e museus.", "imagem": "assets/img/atracoes/central_park.jpg" }
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Cidade do Cabo",
+      "descricao": "Metrópole vibrante aos pés da icônica Table Mountain.",
+      "conteudo": "Combine natureza e cidade. Suba a Table Mountain, visite a Ilha Robben e explore as praias de Boulders Beach, famosas por seus pinguins.",
+      "pais": "África do Sul",
+      "destaque": false,
+      "date": "2025-02-15",
+      "imagem_principal": "assets/img/cidade_do_cabo.jpg",
+      "atracoes": [
+        { "id": 1, "nome": "Table Mountain", "descricao": "Montanha com topo plano que oferece vistas incríveis da cidade.", "imagem": "assets/img/atracoes/table_mountain.jpg" },
+        { "id": 2, "nome": "Boulders Beach", "descricao": "Praia famosa por sua colônia de pinguins-africanos.", "imagem": "assets/img/atracoes/boulders_beach.jpg" },
+        { "id": 3, "nome": "Cabo da Boa Esperança", "descricao": "Península rochosa lendária, parte do parque nacional.", "imagem": "assets/img/atracoes/cabo_boa_esperanca.jpg" }
+      ]
+    }
+  ]
+}
