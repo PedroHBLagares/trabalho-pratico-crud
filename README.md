@@ -78,3 +78,10 @@ A entidade principal é **`destinos`**. Cada destino segue a estrutura abaixo:
     }
   ]
 }
+
+## Apresentação Dinâmica de Dados - Gráfico
+
+Para as Semanas 13 e 14, foi implementada uma página de estatísticas que exibe um gráfico de barras com a quantidade de destinos cadastrados por país. A funcionalidade utiliza a biblioteca **Chart.js** para renderizar os dados consumidos da API.
+
+**Print da Página de Estatísticas (`estatisticas.html`)**
+![alt text](<Captura de tela 2025-11-09 165104.png>)

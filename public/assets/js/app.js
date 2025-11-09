@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // pathname nos dá a página atual (ex: "/index.html", "/detalhes.html")
     const path = window.location.pathname;
 
-    if (path.includes('index.html') || path === '/') {
+    if (path.includes('index.html') || path === '/' || path.endsWith('/public/')) {
         carregarPaginaHome();
     } else if (path.includes('detalhes.html')) {
         carregarPaginaDetalhes();
     } else if (path.includes('cadastro.html')) {
         carregarPaginaCadastro();
+    } else if (path.includes('estatisticas.html')) { // <-- NOVA ROTA
+        carregarPaginaEstatisticas();
     }
 });
 
@@ -121,18 +123,25 @@ async function carregarPaginaDetalhes() {
 
 function carregarDetalhePrincipal(item) {
     const container = document.getElementById('detalhe-principal-container');
+    // Verifica se os campos existem antes de tentar usá-los
+    const nome = item.nome || "Nome indisponível";
+    const descricao = item.descricao || "Descrição indisponível";
+    const conteudo = item.conteudo || "Conteúdo indisponível";
+    const pais = item.pais || "País indisponível";
+    const data = item.date ? new Date(item.date).toLocaleDateString('pt-BR') : "Data indisponível";
+
     const detalheHTML = `
         <div class="row">
             <div class="col-md-7">
-                <img src="${item.imagem_principal}" class="img-fluid rounded shadow-sm" alt="${item.nome}">
+                <img src="${item.imagem_principal}" class="img-fluid rounded shadow-sm" alt="${nome}">
             </div>
             <div class="col-md-5">
-                <h1 class="display-5">${item.nome}</h1>
-                <p class="lead">${item.descricao}</p>
+                <h1 class="display-5">${nome}</h1>
+                <p class="lead">${descricao}</p>
                 <hr>
-                <p><strong>Conteúdo:</strong> ${item.conteudo}</p>
-                <p><strong>País:</strong> ${item.pais}</p>
-                <p><strong>Data:</strong> ${new Date(item.date).toLocaleDateString('pt-BR')}</p>
+                <p><strong>Conteúdo:</strong> ${conteudo}</p>
+                <p><strong>País:</strong> ${pais}</p>
+                <p><strong>Data:</strong> ${data}</p>
                 <a href="index.html" class="btn btn-secondary-custom mt-3">Voltar para a lista</a>
             </div>
         </div>
@@ -265,20 +274,20 @@ async function handleFormSubmit(event) {
         pais: document.getElementById('pais').value,
         imagem_principal: document.getElementById('imagem_principal').value,
         destaque: document.getElementById('destaque').checked,
-        date: new Date().toISOString().split('T')[0], // Data de hoje
-        atracoes: [] // No modo de criação, não adicionamos atrações
     };
     
-    // Se for modo de edição, não sobrescreva as atrações existentes
+    let url = API_URL;
+    let method = 'POST';
+
     if (modoEdicao) {
-       delete dadosFormulario.atracoes; 
-       delete dadosFormulario.date; // Não atualiza a data
+        url = `${API_URL}/${idParaEditar}`;
+        method = 'PATCH'; // Usar PATCH para atualizar parcialmente, em vez de PUT
+    } else {
+        // Se for criação (POST), adiciona data e atrações vazias
+        dadosFormulario.date = new Date().toISOString().split('T')[0];
+        dadosFormulario.atracoes = [];
     }
     
-    // Define o método (POST ou PUT) e a URL da API
-    const method = modoEdicao ? 'PUT' : 'POST';
-    const url = modoEdicao ? `${API_URL}/${idParaEditar}` : API_URL;
-
     // 2. Envia os dados para a API (Fetch)
     try {
         const response = await fetch(url, {
@@ -300,4 +309,81 @@ async function handleFormSubmit(event) {
         console.error("Erro ao salvar:", error);
         alert(error.message);
     }
+}
+
+
+// -----------------------------------------------------------------
+// NOVA FUNCIONALIDADE - PÁGINA DE ESTATÍSTICAS
+// -----------------------------------------------------------------
+
+async function carregarPaginaEstatisticas() {
+    try {
+        // 1. Busca todos os destinos da API
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Erro ao carregar os dados para o gráfico.');
+        const destinos = await response.json();
+
+        // 2. Processa os dados para contar destinos por país
+        const contagemPorPais = destinos.reduce((acc, destino) => {
+            const pais = destino.pais || "País não definido"; // Garante que "undefined" não seja uma chave
+            // Se o país já existe no acumulador (acc), incrementa. Se não, inicia com 1.
+            acc[pais] = (acc[pais] || 0) + 1;
+            return acc;
+        }, {}); // O {} inicia o acumulador como um objeto vazio
+
+        // 3. Prepara os dados para o formato que o Chart.js precisa
+        const labels = Object.keys(contagemPorPais); // Pega os nomes dos países (ex: ["Brasil", "Itália"])
+        const data = Object.values(contagemPorPais); // Pega as contagens (ex: [1, 1])
+
+        // 4. Renderiza o gráfico
+        renderizarGrafico(labels, data);
+
+    } catch (error) {
+        console.error("Erro ao gerar estatísticas:", error);
+        document.getElementById('destinosPorPaisChart').parentElement.innerHTML = 
+            `<div class="alert alert-danger">Erro ao carregar o gráfico. Verifique o console.</div>`;
+    }
+}
+
+function renderizarGrafico(labels, data) {
+    const ctx = document.getElementById('destinosPorPaisChart').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'bar', // Tipo de gráfico: barras
+        data: {
+            labels: labels, // Nomes dos países no eixo X
+            datasets: [{
+                label: 'Quantidade de Destinos',
+                data: data, // Contagem de destinos no eixo Y
+                backgroundColor: 'rgba(13, 110, 253, 0.7)', // Cor das barras (azul primário com transparência)
+                borderColor: 'rgba(13, 110, 253, 1)', // Cor da borda
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true, // Começa o eixo Y no zero
+                    ticks: {
+                        // Garante que o eixo Y só mostre números inteiros (1, 2, 3 e não 1.5)
+                        stepSize: 1 
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false // Não precisa de legenda para um único dataset
+                },
+                title: {
+                    display: true,
+                    text: 'Distribuição de Destinos por País',
+                    font: {
+                        size: 18
+                    }
+                }
+            }
+        }
+    });
 }
